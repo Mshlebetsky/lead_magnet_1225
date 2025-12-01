@@ -39,7 +39,7 @@ from jinja2 import Template
 TOKEN = os.getenv("BOT_TOKEN", "YOUR_TOKEN")
 CHANNEL_ID = os.getenv("CHANNEL_ID", "@yourchannel")
 ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "admin123")
-CHANNEL_LINK = f'https://t.me/{CHANNEL_ID.replace("@", "")}'
+CHANNEL_LINK = f"https://t.me/{CHANNEL_ID.replace('@', '')}"
 
 bot = Bot(
     token=TOKEN,
