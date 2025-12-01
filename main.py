@@ -66,11 +66,11 @@ async def start(msg: Message):
         else:
             await msg.answer(clean_html(load_lead()))
     else:
-        await msg.answer(f"Чтобы получить лид-магнит, подпишитесь на канал:\n"
-        f"{hlink('Перейти к каналу', f'https://t.me/{CHANNEL_ID.replace("@", "")}')}"
-
-                         )
-
+        channel_url = "https://t.me/" + CHANNEL_ID.replace("@", "")
+        await msg.answer(
+            f"Чтобы получить лид-магнит, подпишитесь на канал:\n"
+            f"{hlink('Перейти к каналу', channel_url)}"
+        )
 
 @dp.message(F.text.startswith("/admin"))
 async def admin_login(msg: Message):
