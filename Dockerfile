@@ -1,19 +1,13 @@
-# Используем легкий образ Python
 FROM python:3.11-slim
 
-# Устанавливаем рабочую директорию
 WORKDIR /app
 
-# Устанавливаем зависимости
-COPY bot/requirements.txt .
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Копируем весь проект внутрь контейнера
-COPY bot/ ./bot
-COPY data/ ./data
+COPY . .
 
-# Создаем папку data, если ее нет
+# Создаем каталог данных, если его нет
 RUN mkdir -p /app/data
 
-# Указываем команду запуска
-CMD ["python", "bot/main.py"]
+CMD ["python", "main.py"]
