@@ -1,0 +1,6 @@
+fastapi
+uvicorn[standard]
+aiogram>=3.0.0
+jinja2
+python-multipart
+aiofiles
