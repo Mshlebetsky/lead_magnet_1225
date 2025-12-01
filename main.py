@@ -41,7 +41,6 @@ CHANNEL_ID = os.getenv("CHANNEL_ID", "@yourchannel")
 ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "admin123")
 CHANNEL_LINK = f'https://t.me/{CHANNEL_ID.replace('@', '')}'
 
-# bot = Bot(token=TOKEN, parse_mode=ParseMode.HTML)
 bot = Bot(
     token=TOKEN,
     default=DefaultBotProperties(parse_mode=ParseMode.HTML)
