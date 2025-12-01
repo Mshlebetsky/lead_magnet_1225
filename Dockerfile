@@ -1,19 +1,19 @@
+# Используем легкий образ Python
 FROM python:3.11-slim
 
+# Устанавливаем рабочую директорию
 WORKDIR /app
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential \
-    && rm -rf /var/lib/apt/lists/*
+# Устанавливаем зависимости
+COPY bot/requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
-COPY app/requirements.txt ./app/requirements.txt
-RUN pip install --no-cache-dir -r app/requirements.txt
+# Копируем весь проект внутрь контейнера
+COPY bot/ ./bot
+COPY data/ ./data
 
-COPY app ./app
-COPY .env ./
+# Создаем папку data, если ее нет
+RUN mkdir -p /app/data
 
-WORKDIR /app
-
-EXPOSE 8000
-
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Указываем команду запуска
+CMD ["python", "bot/main.py"]

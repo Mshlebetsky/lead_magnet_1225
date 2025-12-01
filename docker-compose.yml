@@ -1,11 +1,19 @@
-version: "3.8"
+version: "3.9"
+
 services:
   bot:
     build: .
-    container_name: leadbot
+    container_name: lead_magnet_bot
     restart: unless-stopped
-    env_file: .env
+    environment:
+      BOT_TOKEN: "${BOT_TOKEN}"
+      CHANNEL_ID: "${CHANNEL_ID}"
+      ADMIN_PASSWORD: "${ADMIN_PASSWORD}"
     volumes:
       - ./data:/app/data
-    ports:
-      - "8000:8000"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
